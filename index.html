@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery"></script>
+        <script type = "text/javascript" src = "fileMgmt.js"></script>
+    </head>
+
+    <body id = "bg_image" class="bg_closed">
+        
+        <h1>Speak, friend, and enter</h1>
+            
+            <div class = "input_container">
+                <div class = input id = "name_input">
+                    <label for="name">Enter Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <br>
+                <div class = input id = "note_input">
+                    <label for="note">Enter Note:</label>
+                    <input type="text" id="note" name="note">
+                </div>
+            </div>
+
+            <input type = "button" id = "writeBtn" value = "Write File" onclick = "writeFile()">
+            <input type = "button" id = "readBtn" value = "Read File" onclick = "readFile()">
+            <input type = "button" id = "deleteBtn" value = "Delete File" onclick = "deleteFile()">
+
+            <br>
+
+            <textarea readonly id = "textarea" name = "textarea" rows = "10" cols = "50"></textarea>
+
+            <div id = "message"></div>
+    </body>
+</html>

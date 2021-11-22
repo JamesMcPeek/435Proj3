@@ -63,7 +63,7 @@ app.delete('/delete-file', (req, res) => {
         console.log("deleted file");
     })
 
-    res.send(JSON.stringify({message: 'Your note has perished in the depths of Moria'}));
+    res.send(JSON.stringify({message: 'Your file has perished in the depths of Moria'}));
 });
 
 //make server listen on a port

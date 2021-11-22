@@ -21,8 +21,10 @@ function handleReadButton() {
     fetch(url + params, fetchObject)
         .then(response => response.json())               // obtain json object sent from server
         .then(jsonObject => {                            // use jsonObject and get its message property
-            outputMessage.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
+            outputArea.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
         });
+
+        outputMessage.innerHTML = "File has been read";
 
 }//end handleBasicButton
 //---------------------------------------------------------
@@ -31,6 +33,7 @@ function handleReadButton() {
 function handleWriteButton() {
     const name = document.querySelector('#name').value;
     const note = document.querySelector('#note').value;
+    outputArea.innerHTML = "";
 
     const url = "http://localhost:3000/write-file";
 
@@ -60,6 +63,7 @@ function handleWriteButton() {
 function handleDeleteButton() {
     const name = document.querySelector('#name').value;
     const note = document.querySelector('#note').value;
+    outputArea.innerHTML = "";
 
     const url = "http://localhost:3000/delete-file";
 

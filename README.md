@@ -5,11 +5,10 @@ TODO:
 - Select file and show notes
 - Update/Delete each note
 
-How to run:
-~Front end~
+How to run: Front end
 - Navigate to front end folder
 - http-server
 
-~Back end~
+How to run: Back end
 - Navigate to root folder
 - node .

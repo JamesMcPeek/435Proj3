@@ -9,8 +9,6 @@ const app = express();  //get an express object
 const cors = require('cors');  //avoid that nasty CORS error
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const { fileURLToPath } = require('url');
-const { response } = require('express');
 
 const portNum = 3000;
 

@@ -1,7 +1,6 @@
 # 435Proj3
 
 TODO:
-- Show list of all available files
 - Update/Delete each note
 
 How to run: Front end

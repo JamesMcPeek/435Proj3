@@ -28,7 +28,11 @@ app.get('/', (req, res) => {
     console.log('received from client: ' + req.query.name + ' ' + req.query.note);
     console.log('sending response to the client from / ...');
 
-    res.send(JSON.stringify({message : "reading file"}));
+    const file = req.query.name + ".txt";
+
+    var content = fs.readFileSync(file).toString();
+
+    res.send(JSON.stringify({message : `${content}`}));
 });
 
 app.post('/write-file', (req, res) => {

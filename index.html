@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <title>Project 3</title>
+        <meta charset="UTF-8">
+        <script src="call-server.js"></script>
+        <link rel = "stylesheet" type = "text/css" href="style.css">
+    </head>
+
+    <body class = "bg_closed">
+
+        <h1>Speak, friend, and enter</h1>
+
+        <div class = "input_container">
+            <div class = input id = "name_input">
+                <label for = "name">Enter Name:</label>
+                <input type = "text" id = "name">    
+            </div>
+            <br>
+            <div class = input id = "note_input">
+                <label for = "note">Enter Note:</label>
+                <input type = "text" id = "note">
+            </div>
+            <br>
+        </div>
+        
+        <button id = "readBtn">Read File</button>
+        <button id = "writeBtn">Write File</button>
+        <button id = "deleteBtn">Delete File</button>
+        
+        <br><br>
+
+        <textarea readonly id = "output" rows = "10" cols = "50"></textarea>
+        <br>
+        <h3><span id = "message"></span></h3>
+    </body>
+</html>

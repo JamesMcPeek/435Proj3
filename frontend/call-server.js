@@ -1,5 +1,7 @@
 let outputArea;   //globally available to all functions
 let outputMessage;
+let outputFiles;
+var fileList = new Array();
 
 //----------------------testing basic GET functionality
 function handleReadButton() {
@@ -57,6 +59,12 @@ function handleWriteButton() {
             outputMessage.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
         });
 
+    if (!fileList.includes(name)){
+        fileList.push(name);
+    }
+
+    outputFiles.value = fileList.join("\n");
+
 }//end handleWriteButton
 
 //-------------------------send message to server to delete to file 
@@ -87,6 +95,13 @@ function handleDeleteButton() {
             outputMessage.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
         });
 
+        const index = fileList.indexOf(name);
+        if (index > -1){
+            fileList.splice(index,1);
+        }
+
+        outputFiles.value = fileList.join("\n");
+
 }//end handleDeleteButton
 
 //----------------------------------------------------------------
@@ -102,6 +117,8 @@ function start() {
     //initialize global outputArea
     outputArea = document.querySelector('#output');
     outputMessage = document.querySelector('#message');
+    outputFiles = document.querySelector('#directory');
+
 }//end start
 
 window.onload = start;

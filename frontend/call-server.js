@@ -87,7 +87,7 @@ function handleDeleteButton() {
 
 //----------------------------------------------------------------
 function start() {
-    const readButton = document.querySelector('#writeBtn');
+    const readButton = document.querySelector('#readBtn');
     const writeButton = document.querySelector('#writeBtn');
     const deleteButton = document.querySelector('#deleteBtn');
 

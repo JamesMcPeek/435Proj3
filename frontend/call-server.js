@@ -26,7 +26,7 @@ function handleReadButton() {
             outputArea.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
         });
 
-        outputMessage.innerHTML = "File has been read";
+        outputMessage.innerHTML = "Your file has been read";
 
 }//end handleBasicButton
 //---------------------------------------------------------

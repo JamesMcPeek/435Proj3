@@ -3,11 +3,46 @@ let outputMessage;
 let outputFiles;
 var fileList = new Array();
 
+//-------------------------send message to server to write to file 
+function handleWriteButton() {
+    const name = document.querySelector('#name').value;
+    const note = document.querySelector('#note').value;
+    outputArea.innerHTML = "";
+
+    const url = "http://localhost:3000/write-file";
+
+    const dataObject = {
+        name: name,
+        note: note
+    };
+
+    const fetchObject = {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(dataObject)
+    };
+
+    //perform fetch on url with parameters (query String on GET)
+    fetch(url, fetchObject)
+        .then(response => response.json())               // obtain json object sent from server
+        .then(jsonObject => {                            // use jsonObject and get its message property
+            outputMessage.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
+        });
+
+    if (!fileList.includes(name)){
+        fileList.push(name);
+    }
+
+    outputFiles.value = fileList.join("\n");
+
+}//end handleWriteButton
+
 //----------------------testing basic GET functionality
 function handleReadButton() {
     const name = document.querySelector('#name').value;
     const note = document.querySelector('#note').value;
-
 
     const url = "http://localhost:3000";
     const params = `?name=${name}&note=${note}`;
@@ -31,13 +66,13 @@ function handleReadButton() {
 }//end handleBasicButton
 //---------------------------------------------------------
 
-//-------------------------send message to server to write to file 
-function handleWriteButton() {
+//-------------------------send message to server to update file 
+function handleUpdateButton() {
     const name = document.querySelector('#name').value;
     const note = document.querySelector('#note').value;
     outputArea.innerHTML = "";
 
-    const url = "http://localhost:3000/write-file";
+    const url = "http://localhost:3000/update-file";
 
     const dataObject = {
         name: name,
@@ -45,7 +80,7 @@ function handleWriteButton() {
     };
 
     const fetchObject = {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type' : 'application/json'
         },
@@ -95,25 +130,27 @@ function handleDeleteButton() {
             outputMessage.innerHTML = jsonObject.message;   // set innerHTML of Area to message sent in jsonObject
         });
 
-        const index = fileList.indexOf(name);
-        if (index > -1){
-            fileList.splice(index,1);
-        }
+    const index = fileList.indexOf(name);
+    if (index > -1){
+        fileList.splice(index,1);
+    }
 
-        outputFiles.value = fileList.join("\n");
+    outputFiles.value = fileList.join("\n");
 
 }//end handleDeleteButton
 
 //----------------------------------------------------------------
 function start() {
-    const readButton = document.querySelector('#readBtn');
     const writeButton = document.querySelector('#writeBtn');
+    const readButton = document.querySelector('#readBtn');
+    const updateButton = document.querySelector('#updateBtn');
     const deleteButton = document.querySelector('#deleteBtn');
-
-    readButton.onclick = handleReadButton;
+    
     writeButton.onclick = handleWriteButton;
+    readButton.onclick = handleReadButton;
+    updateButton.onclick = handleUpdateButton;
     deleteButton.onclick = handleDeleteButton;
-
+    
     //initialize global outputArea
     outputArea = document.querySelector('#output');
     outputMessage = document.querySelector('#message');
@@ -123,6 +160,7 @@ function start() {
 
 window.onload = start;
 
+// Create -> POST
 // Read -> GET
-// Write -> POST
+// Update -> PUT
 // Delete -> DELETE

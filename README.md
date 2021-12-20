@@ -1,8 +1,5 @@
 # 435Proj3
 
-TODO:
-- Update/Delete each note
-
 How to run: Front end
 - Navigate to front end folder
 - http-server
